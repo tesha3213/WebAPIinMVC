@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{BA4DAC51-2485-4AF0-B4C6-ECEA107FC64D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC", "MVC\MVC.csproj", "{A44C5348-7555-4A3A-B38F-122E744E8947}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{BA4DAC51-2485-4AF0-B4C6-ECEA107FC64D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA4DAC51-2485-4AF0-B4C6-ECEA107FC64D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA4DAC51-2485-4AF0-B4C6-ECEA107FC64D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A44C5348-7555-4A3A-B38F-122E744E8947}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A44C5348-7555-4A3A-B38F-122E744E8947}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A44C5348-7555-4A3A-B38F-122E744E8947}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A44C5348-7555-4A3A-B38F-122E744E8947}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

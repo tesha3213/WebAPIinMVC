@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HRModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DanhSachQuyen">
+          <Key>
+            <PropertyRef Name="IdQuyen" />
+          </Key>
+          <Property Name="IdQuyen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenQuyen" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="NguoiDung">
+          <Key>
+            <PropertyRef Name="IdNguoiDung" />
+          </Key>
+          <Property Name="IdNguoiDung" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenDangNhap" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="MatKhau" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Age" Type="int" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="255" />
+          <Property Name="NgaySinh" Type="date" />
+          <Property Name="sdt" Type="char" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="PhanQuyen">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdQuyen" Type="int" />
+          <Property Name="IsView" Type="bit" />
+          <Property Name="IsEdit" Type="bit" />
+        </EntityType>
+        <Association Name="FK__PhanQuyen__IdQuy__31EC6D26">
+          <End Role="DanhSachQuyen" Type="Self.DanhSachQuyen" Multiplicity="0..1" />
+          <End Role="PhanQuyen" Type="Self.PhanQuyen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DanhSachQuyen">
+              <PropertyRef Name="IdQuyen" />
+            </Principal>
+            <Dependent Role="PhanQuyen">
+              <PropertyRef Name="IdQuyen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HRModelStoreContainer">
+          <EntitySet Name="DanhSachQuyen" EntityType="Self.DanhSachQuyen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NguoiDung" EntityType="Self.NguoiDung" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhanQuyen" EntityType="Self.PhanQuyen" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__PhanQuyen__IdQuy__31EC6D26" Association="Self.FK__PhanQuyen__IdQuy__31EC6D26">
+            <End Role="DanhSachQuyen" EntitySet="DanhSachQuyen" />
+            <End Role="PhanQuyen" EntitySet="PhanQuyen" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HRModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DanhSachQuyen">
+          <Key>
+            <PropertyRef Name="IdQuyen" />
+          </Key>
+          <Property Name="IdQuyen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenQuyen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PhanQuyens" Relationship="Self.FK__PhanQuyen__IdQuy__31EC6D26" FromRole="DanhSachQuyen" ToRole="PhanQuyen" />
+        </EntityType>
+        <EntityType Name="NguoiDung">
+          <Key>
+            <PropertyRef Name="IdNguoiDung" />
+          </Key>
+          <Property Name="IdNguoiDung" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenDangNhap" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="HoTen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+          <Property Name="sdt" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PhanQuyen">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdQuyen" Type="Int32" />
+          <Property Name="IsView" Type="Boolean" />
+          <Property Name="IsEdit" Type="Boolean" />
+          <NavigationProperty Name="DanhSachQuyen" Relationship="Self.FK__PhanQuyen__IdQuy__31EC6D26" FromRole="PhanQuyen" ToRole="DanhSachQuyen" />
+        </EntityType>
+        <Association Name="FK__PhanQuyen__IdQuy__31EC6D26">
+          <End Role="DanhSachQuyen" Type="Self.DanhSachQuyen" Multiplicity="0..1" />
+          <End Role="PhanQuyen" Type="Self.PhanQuyen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DanhSachQuyen">
+              <PropertyRef Name="IdQuyen" />
+            </Principal>
+            <Dependent Role="PhanQuyen">
+              <PropertyRef Name="IdQuyen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBModel" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DanhSachQuyens" EntityType="Self.DanhSachQuyen" />
+          <EntitySet Name="NguoiDungs" EntityType="Self.NguoiDung" />
+          <EntitySet Name="PhanQuyens" EntityType="Self.PhanQuyen" />
+          <AssociationSet Name="FK__PhanQuyen__IdQuy__31EC6D26" Association="Self.FK__PhanQuyen__IdQuy__31EC6D26">
+            <End Role="DanhSachQuyen" EntitySet="DanhSachQuyens" />
+            <End Role="PhanQuyen" EntitySet="PhanQuyens" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HRModelStoreContainer" CdmEntityContainer="DBModel">
+          <EntitySetMapping Name="DanhSachQuyens">
+            <EntityTypeMapping TypeName="HRModel.DanhSachQuyen">
+              <MappingFragment StoreEntitySet="DanhSachQuyen">
+                <ScalarProperty Name="IdQuyen" ColumnName="IdQuyen" />
+                <ScalarProperty Name="TenQuyen" ColumnName="TenQuyen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NguoiDungs">
+            <EntityTypeMapping TypeName="HRModel.NguoiDung">
+              <MappingFragment StoreEntitySet="NguoiDung">
+                <ScalarProperty Name="IdNguoiDung" ColumnName="IdNguoiDung" />
+                <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="sdt" ColumnName="sdt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhanQuyens">
+            <EntityTypeMapping TypeName="HRModel.PhanQuyen">
+              <MappingFragment StoreEntitySet="PhanQuyen">
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdQuyen" ColumnName="IdQuyen" />
+                <ScalarProperty Name="IsView" ColumnName="IsView" />
+                <ScalarProperty Name="IsEdit" ColumnName="IsEdit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
