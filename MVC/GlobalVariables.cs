@@ -15,7 +15,7 @@ namespace MVC
         {
             WebApiClient.BaseAddress = new Uri("http://localhost:51884/api/");
             WebApiClient.DefaultRequestHeaders.Clear();
-            WebApiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            
         }
     }
 }

@@ -1,0 +1,62 @@
+﻿@model MVC.Models.mvcNguoiDungModel
+@{
+    ViewBag.Title = "AddOrEdit";
+}
+
+<h2>Create or Update User</h2>
+
+<div class="form-body">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.IdNguoiDung)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HoTen)
+            @Html.EditorFor(model => model.HoTen)
+            @Html.ValidationMessageFor(model => model.HoTen)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TenDangNhap)
+            @Html.EditorFor(model => model.TenDangNhap)
+            @Html.ValidationMessageFor(model => model.TenDangNhap)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MatKhau)
+            @Html.PasswordFor(model => model.MatKhau)
+            @Html.ValidationMessageFor(model => model.MatKhau)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NgaySinh)
+            @Html.EditorFor(model => model.NgaySinh)
+            @Html.ValidationMessageFor(model => model.NgaySinh)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Age)
+            @Html.EditorFor(model => model.Age)
+            @Html.ValidationMessageFor(model => model.Age)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.sdt)
+            @Html.EditorFor(model => model.sdt)
+            @Html.ValidationMessageFor(model => model.sdt)
+        </div>
+
+
+
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn button" />
+            <input type="reset" value="Reset" class="btn button" />
+        </div>
+
+    }
+
+</div>
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval");
+    
+    }
